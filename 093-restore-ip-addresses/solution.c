@@ -11,13 +11,13 @@ char** restoreIpAddresses(char* s, int* returnSize) {
     
     if (size < 4 || size > 12) return NULL;
 
-    int n = (size-1) * (size-2) * (size-3) / 6; // 最大不重复子串个数
+    int n = (size-1) * (size-2) * (size-3) / 6; // 最大不重复ip个数
     char** addrs = (char**) calloc(n, sizeof(char*));
     for(int i=0;i<n;i++ )
     {
         addrs[i]=(char *) calloc(16, sizeof(char*)); // 每个指针指向一个ip地址
     }
-    char *addr[4]; 
+    char *addr[4]; // 4个ip子串
     for (int i=0;i< 4;i++) {
          addr[i] = (char*) calloc(4, sizeof(char*)); // 每个指针指向一个ip子串
     }
@@ -28,8 +28,8 @@ char** restoreIpAddresses(char* s, int* returnSize) {
 }
 
 void* restore(char *s, int start, int n,  char *addr[], char **addrs, int *returnSize) {
-    
-	if (n >=4) {
+	
+    if (n >=4) {
         if (start == strlen(s)) {
             for (int i=0;i<4;i++) {
                 strcat(addrs[*returnSize], addr[i]);
