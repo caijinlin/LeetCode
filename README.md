@@ -1,3 +1,3 @@
 # Leetcode
 
-My C solution
+My leetcode solution
